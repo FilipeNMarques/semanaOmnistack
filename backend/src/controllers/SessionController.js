@@ -11,11 +11,19 @@ module.exports = {
         //É um recurso do js chamado "desestruturação"
         const { email } = req.body
         //Dentro de create eu vou passar as informacoes que quero para criar meu user
-        const user = await User.create({
-            email
-        })
         //Lembrar sempre de chamar o async/await, pois essa função será realizada de forma assincrona
+
+        let user = await User.findOne({ email })
+        //Vai procurar na base se já existe esse email cadastrado
+
+        if (!user) {
+            //Se o email não for encontrado, ele cria um novo usuario
+            user = await User.create({ email })
+
+        }
+
         return res.json(user)
 
     }
 }
+
