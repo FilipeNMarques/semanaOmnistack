@@ -1,7 +1,5 @@
 import React from 'react';
 
-//API
-import api from './services/api'
 //ROUTES
 import Routes from './routes'
 //STYLES
